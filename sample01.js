@@ -1,19 +1,37 @@
-(function(ext) {
-    // Cleanup function when the extension is unloaded
+/* Extension using the JavaScript Speech API for text to speech */
+/* Sayamindu Dasgupta <sayamindu@media.mit.edu>, April 2014 */
+
+new (function() {
+    var ext = this;
+
+    ext.speak_text = function (text, callback) {
+        var u = new SpeechSynthesisUtterance(text.toString());
+        u.onend = function(event) {
+            if (typeof callback=="function") callback();
+        };
+        
+        speechSynthesis.speak(u);
+    };
+
     ext._shutdown = function() {};
 
-    // Status reporting code
-    // Use this to report missing hardware, plugin or unsupported browser
     ext._getStatus = function() {
+        if (window.SpeechSynthesisUtterance === undefined) {
+            return {status: 1, msg: 'Your browser does not support text to speech. Try using Google Chrome or Safari.'};
+        }
         return {status: 2, msg: 'Ready'};
     };
 
-    // Block and block menu descriptions
     var descriptor = {
         blocks: [
-        ]
+            //['', 'set voice to %m.voices', 'set_voice', ''],
+            ['w', 'speak %s', 'speak_text', 'Hello!'],
+            ['w',  '読み上げる %s', 'speak_text', 'Hello!'],]
+        ],
+        /*menus: {
+            voices: _get_voices(),
+        },*/
     };
 
-    // Register the extension
-    ScratchExtensions.register('Sample extension from scratch4ws', descriptor, ext);
-})({});
+    ScratchExtensions.register('Text to Speech', descriptor, ext);
+})();
