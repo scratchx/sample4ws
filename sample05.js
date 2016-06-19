@@ -1,18 +1,3 @@
-/*
- *This program is free software: you can redistribute it and/or modify
- *it under the terms of the GNU General Public License as published by
- *the Free Software Foundation, either version 3 of the License, or
- *(at your option) any later version.
- *
- *This program is distributed in the hope that it will be useful,
- *but WITHOUT ANY WARRANTY; without even the implied warranty of
- *MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *GNU General Public License for more details.
- *
- *You should have received a copy of the GNU General Public License
- *along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
 // The MIT License (MIT)
 
 // Copyright (c) 2015 Stephen Howell, stephenhowell@outlook.com
@@ -34,7 +19,7 @@
 //LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //THE SOFTWARE.
- 
+
 (function(ext) {
 
   ext.latestUserTweet = function(name, callback) {
@@ -88,7 +73,6 @@
     });
   };
 
-
     ext.speak_text = function (text, callback) {
         var u = new SpeechSynthesisUtterance(text.toString());
         u.onend = function(event) {
@@ -113,7 +97,7 @@
 
     ext.recognized_speech = function () {return recognized_speech;};
 
-/*** for Kinect V1 ***/
+    //for Kinect V1 
     var jointData = { "HipCenter": null, "Spine": null, "ShoulderCenter": null, "Head": null, "ShoulderLeft": null, "ElbowLeft": null, "WristLeft": null, "HandLeft": null, "ShoulderRight": null, "ElbowRight": null, "WristRight": null, "HandRight": null, "HipLeft": null, "KneeLeft": null, "AnkleLeft": null, "FootLeft": null, "HipRight": null, "KneeRight": null, "AnkleRight": null, "FootRight": null };
 
     var connection = new WebSocket('ws://localhost:8181/');
@@ -136,12 +120,12 @@
         jointData[obj.joint] = obj;
     }
 
-/*** for all blocks **/
-    //Å@ext._shutdown = function() {}; // for blocks other than Kinect 
-    // Cleanup function when the extension is unloaded
+/////for all blocks 
+    //ext._shutdown = function() {}; // for blocks other than Kinect 
+    //Cleanup function when the extension is unloaded
     ext._shutdown = function () { if (connection.socket.connected) { connection.socket.disconnect(); } };
 
-/*** for all blocks **/
+////for all blocks
    ext._getStatus = function() {
         // for speech synthesis
         if (window.SpeechSynthesisUtterance === undefined) {
@@ -185,12 +169,11 @@
       ['w', 'speak %s', 'speak_text', 'Hello!'], 
       ['w', 'wait and recognize speech', 'recognize_speech'],
       ['r', 'recognized speech', 'recognized_speech'],
-      // for Kinect V1
        ['r', 'get %m.coordinate position of %m.bodyPart', 'getValue', 'x', 'HandRight'],
 
     ],
    menus: {
-     	 sort: ["popular", "recent"]
+     	 sort: ["popular", "recent"],
          coordinate: ["x", "y", "z"],
          bodyPart: [ "HipCenter", "Spine", "ShoulderCenter", "Head", "ShoulderLeft", "ElbowLeft", "WristLeft", "HandLeft", "ShoulderRight", "ElbowRight", 
 								"WristRight", "HandRight", "HipLeft", "KneeLeft", "AnkleLeft", "FootLeft", "HipRight", "KneeRight", "AnkleRight", "FootRight" ]
@@ -199,7 +182,7 @@
     // url: 'https://dev.twitter.com/overview/documentation'
   };
 
-  ScratchExtensions.register('blocks for ws@tsuda', descriptor, ext);
+  ScratchExtensions.register('blocks for tsuda', descriptor, ext);
 
 })({});
 
