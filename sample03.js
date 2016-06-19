@@ -111,7 +111,6 @@ new (function() {
         blocks: [
             //['', 'set voice to %m.voices', 'set_voice', ''],
              ['w', 'speak %s', 'speak_text', 'Hello!'],
-           Å@// ['w',  'ì«Ç›è„Ç∞ÇÈ %s', 'speak_text', 'Hello!'],
         ],
         /*menus: {
             voices: _get_voices(),
