@@ -26,7 +26,7 @@ new (function() {
         blocks: [
             //['', 'set voice to %m.voices', 'set_voice', ''],
             ['w', 'speak %s', 'speak_text', 'Hello!'],
-            ['w',  '読み上げる %s', 'speak_text', 'Hello!'],
+            ['w',  'speak2 %s', 'speak_text', 'Hello!'],
         ],
         /*menus: {
             voices: _get_voices(),
