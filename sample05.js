@@ -140,9 +140,11 @@
         if (connection.readyState == 1) {
             return { status: 2, msg: 'Connected' };
         } 
-        else {               
-            return { status: 1, msg: 'Not connected, attempting reconnection...' };                
-        }    
+        else {
+        // for now, return ready, even if not connected    
+              return { status: 2, msg: 'Not Connected' }; 
+        //    return { status: 1, msg: 'Not connected, attempting reconnection...' };                
+         }    
         return {status: 2, msg: 'Ready'};  // in case connection is not working correctly.
     };
 
