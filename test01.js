@@ -6,7 +6,7 @@ ScratchExtensions.loadExternalJS("http://savaka2.github.io/scratch-extensions-di
 // Link Opner:
 ScratchExtensions.loadExternalJS("http://savaka2.github.io/scratch-extensions/link-opener.js");
 // Browser Info and Language:
-ScratchExtensions.loadExternalJS("xtensions-directory/extensions/Browser_Info_and_Language.js);
+ScratchExtensions.loadExternalJS("xtensions-directory/extensions/Browser_Info_and_Language.js");
 // text to speech: needs windows
 ScratchExtensions.loadExternalJS("http://sayamindu.github.io/scratch-extensions/text-to-speech/text_to_speech_extension.js");
 // speech recognition: needs windows
